@@ -5,7 +5,7 @@ __pycache__/
 
 # Database file (SQLite)
 site.db
-*.sqlite
+# *.sqlite
 
 # Flask session files
 flask_session/
