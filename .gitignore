@@ -4,7 +4,7 @@ __pycache__/
 *.pyc
 
 # Database file (SQLite)
-site.db
+# site.db
 # *.sqlite
 
 # Flask session files
