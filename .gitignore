@@ -1,0 +1,14 @@
+# Python environment
+.venv/
+__pycache__/
+*.pyc
+
+# Database file (SQLite)
+site.db
+*.sqlite
+
+# Flask session files
+flask_session/
+
+# Editor files
+.vscode/

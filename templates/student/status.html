@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-6 col-md-8">
+            <div class="card shadow-lg">
+                <div class="card-header bg-success text-white text-center">
+                    <h4 class="mb-0">Your Application Status</h4>
+                </div>
+                <div class="card-body p-4">
+                    <h5 class="card-title">{{ applicant.full_name }}</h5>
+                    <p class="card-text text-muted">Applied for: {{ applicant.program }} on {{ applicant.date_applied.strftime('%Y-%m-%d') }}</p>
+
+                    <hr>
+
+                    <p class="lead"><strong>Current Status:</strong></p>
+                    {% if applicant.status == 'Approved' %}
+                        <div class="alert alert-success h4 text-center" role="alert">
+                            🎉 Application Approved! 🎉
+                        </div>
+                        <p class="text-center">We will contact you shortly with further enrollment details.</p>
+                    {% elif applicant.status == 'Rejected' %}
+                        <div class="alert alert-danger h4 text-center" role="alert">
+                            Application Rejected.
+                        </div>
+                        <p class="text-center">Thank you for your interest. You may apply again next term.</p>
+                    {% else %}
+                        <div class="alert alert-warning h4 text-center" role="alert">
+                            ⏳ Pending Review ⏳
+                        </div>
+                        <p class="text-center">Your application is currently being reviewed by the admissions team. Please check back later.</p>
+                    {% endif %}
+                </div>
+                <div class="card-footer text-muted text-center">
+                    <a href="{{ url_for('main.register') }}" class="btn btn-secondary">Back to Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
