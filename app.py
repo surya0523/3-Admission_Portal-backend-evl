@@ -17,7 +17,6 @@ def create_app(config_class=Config):
     Migrate(app, db)
     
     # Simple session setup (Required for the simple admin_required decorator)
-    # In a real app, use Flask-Login
     @app.before_request
     def make_session_permanent():
         session.permanent = True
@@ -28,9 +27,15 @@ def create_app(config_class=Config):
 
     return app
 
+# =========================================================================
+# 🌟 Local Development Block (Used only when running 'python app.py')
+# =========================================================================
 if __name__ == '__main__':
-    # When running directly, use the factory to create the app instance
-    app = create_app()
-    app.run(debug=True)
+    app_instance = create_app()
+    app_instance.run(debug=True)
 
-# Note: The recommended way to run is "flask run --debug" after setting FLASK_APP=app
+# =========================================================================
+# 🌟 Deployment/Gunicorn Block (Used when running 'gunicorn app:app')
+# =========================================================================
+# Gunicorn/Render will look for this global 'app' variable.
+app = create_app()
